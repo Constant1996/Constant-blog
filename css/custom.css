@@ -1,0 +1,115 @@
+/* 全局背景 - 灰白色 */
+body { 
+  background-color: #f8fafc !important; 
+}
+
+/* 卡片式设计 - 文章列表 */
+.recent-post-item {
+  background: white !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  margin-bottom: 1.5rem !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recent-post-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 侧边栏卡片 */
+.card-widget {
+  background: white !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 1rem !important;
+  border: none !important;
+  padding: 1rem !important;
+}
+
+/* 头部导航 - 渐变背景 */
+#page-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-radius: 0 0 1rem 1rem;
+  margin-bottom: 2rem;
+}
+
+/* 按钮样式 */
+#card-info-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 1.5rem !important;
+}
+
+/* 标签云 - 圆润胶囊 */
+.card-tag-cloud a {
+  background: #e0e7ff !important;
+  color: #4338ca !important;
+  border-radius: 9999px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.875rem !important;
+  transition: all 0.2s;
+  display: inline-block;
+  margin: 0.25rem !important;
+}
+
+.card-tag-cloud a:hover {
+  background: #4338ca !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
+/* 网站信息区域 */
+#site-info {
+  padding: 2rem 0 !important;
+}
+
+/* 导航栏 */
+#nav {
+  background: transparent !important;
+}
+
+/* 最新文章缩略图圆角 */
+.recent-post-item .post-bg {
+  border-radius: 0 !important;
+}
+
+/* 侧边栏头像圆角 */
+.avatar-img img {
+  border-radius: 50% !important;
+  border: 4px solid #667eea !important;
+}
+
+/* 分类和标签链接 */
+.article-meta__categories, 
+.article-meta__tags {
+  color: #667eea !important;
+}
+
+/* 分割线 */
+.article-meta-separator {
+  color: #94a3b8 !important;
+}
+
+/* 页脚 */
+#footer {
+  background: white !important;
+  margin-top: 2rem;
+  padding: 1rem !important;
+  border-radius: 1rem 1rem 0 0;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
