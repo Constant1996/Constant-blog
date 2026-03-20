@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MG工作室</title>
-    <meta name="description" content="借事炼性 · 科技与教育的融合">
-    <!-- Tailwind CSS CDN -->
+    <title>MG Studio · 数字冥想空间</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 自定义配置 -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        'dark-bg': '#0f172a',
-                        'dark-secondary': '#1e293b',
-                        'accent': '#6366f1',
-                        'accent-hover': '#4f46e5'
-                    },
                     animation: {
-                        'float': 'float 3s ease-in-out infinite'
+                        'slow-pulse': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 20s ease-in-out infinite',
+                        'drift': 'drift 25s ease-in-out infinite'
                     },
                     keyframes: {
+                        pulse: {
+                            '0%, 100%': { opacity: 0.3 },
+                            '50%': { opacity: 0.6 }
+                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-5px)' }
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        drift: {
+                            '0%, 100%': { transform: 'translateX(0px)' },
+                            '50%': { transform: 'translateX(15px)' }
                         }
                     }
                 }
@@ -32,174 +33,239 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #0f172a;
-            color: #f1f5f9;
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap');
+        
+        .font-mono {
+            font-family: 'IBM Plex Mono', monospace;
         }
-        .project-card {
+        
+        .digital-core-hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .cyber-glow-blue {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+            top: 10%;
+            left: 15%;
+            animation: slow-pulse 12s infinite, drift 30s infinite;
+            z-index: 0;
+        }
+        
+        .graphite-glow-blue {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(71, 85, 105, 0.25) 0%, transparent 70%);
+            bottom: 15%;
+            right: 20%;
+            animation: slow-pulse 15s infinite, float 25s infinite;
+            z-index: 0;
+        }
+        
+        .evolution-core {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        
+        .core-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            opacity: 0.7;
+        }
+        
+        .core-particle:nth-child(2n) {
+            background-color: #475569;
+        }
+        
+        .flow-item {
             transition: all 0.3s ease;
-            transform: translateY(0);
+            position: relative;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        
+        .flow-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            transform: translateY(-50%);
+            opacity: 0.8;
         }
+        
+        .flow-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .flow-item:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0.75rem;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            animation: glow-pulse 2s ease-in-out;
+        }
+        
+        @keyframes glow-pulse {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 0.4; transform: scale(1.1); }
+            100% { opacity: 0; transform: scale(1.2); }
+        }
+        
         .nav-link {
-            transition: color 0.2s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
         }
-        .nav-link:hover {
-            color: #6366f1;
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            border-radius: 2px;
+            transition: width 0.3s ease;
         }
-        .hero-text {
-            line-height: 1.4;
+        
+        .nav-link:hover::after {
+            width: 100%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .backdrop-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
     </style>
 </head>
-<body class="bg-dark-bg text-gray-100">
-    <!-- 导航栏 -->
-    <nav class="fixed top-0 w-full bg-dark-bg/80 backdrop-blur-sm z-50 border-b border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold text-white">MG工作室</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#hero" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">首页</a>
-                        <a href="#projects" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">项目</a>
-                        <a href="#about" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">关于</a>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">GitHub</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button class="text-gray-400 hover:text-white">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
+<body class="bg-slate-50">
+    <!-- 背景光晕 -->
+    <div class="cyber-glow-blue"></div>
+    <div class="graphite-glow-blue"></div>
+    
+    <!-- 顶部导航 -->
+    <nav class="fixed top-0 w-full z-50 py-4 px-6 backdrop-blur bg-transparent">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="font-mono text-slate-800 font-bold">MG Studio</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="nav-link text-slate-700 hover:text-blue-600 font-mono">首页</a>
+                <a href="#" class="nav-link text-slate-700 hover:text-blue-600 font-mono">档案</a>
+                <a href="#" class="nav-link text-slate-700 hover:text-blue-600 font-mono">进化</a>
+                <a href="#" class="nav-link text-slate-700 hover:text-blue-600 font-mono">联系</a>
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-4xl mx-auto">
-            <div class="mb-8">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 hero-text">
-                    <span class="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                        MG工作室
-                    </span>
-                </h1>
-                <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 font-light hero-text">
-                    借事炼性 · 以科技赋能教育温度
-                </p>
-            </div>
-            <div class="mt-12">
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                    在技术与人文的交汇处，我们相信每一个项目都是修炼心性的道场。
-                    通过创新的科技解决方案，传递教育的温度与智慧。
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 项目展示区 -->
-    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">精选项目</h2>
-                <p class="text-gray-400 text-lg">探索我们的技术创新之旅</p>
+    
+    <!-- 首屏 Digital Core Hero -->
+    <section class="digital-core-hero">
+        <div class="text-center z-10">
+            <!-- 进化之核图形 -->
+            <div class="evolution-core mb-8 mx-auto">
+                <!-- 动态生成粒子 -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const core = document.querySelector('.evolution-core');
+                        const particleCount = 24;
+                        
+                        for (let i = 0; i < particleCount; i++) {
+                            const particle = document.createElement('div');
+                            particle.className = 'core-particle';
+                            
+                            // 随机位置在圆形区域内
+                            const angle = (i / particleCount) * Math.PI * 2;
+                            const distance = 40 + Math.random() * 60;
+                            const x = Math.cos(angle) * distance;
+                            const y = Math.sin(angle) * distance;
+                            
+                            particle.style.transform = `translate(${x}px, ${y}px)`;
+                            particle.style.animationDelay = `${i * 0.2}s`;
+                            
+                            core.appendChild(particle);
+                        }
+                    });
+                </script>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 项目卡片 1 -->
-                <div class="project-card bg-dark-secondary rounded-xl p-6 border border-gray-800 hover:border-accent">
-                    <div class="mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">AI 表情伴游机器人</h3>
-                        <p class="text-gray-400 leading-relaxed">
-                            基于深度学习的情感识别系统，能够实时分析用户表情并提供陪伴式交互体验，让科技充满人性温度。
-                        </p>
+            <!-- Slogan -->
+            <h1 class="font-mono text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-slate-800">
+                借事炼性·以技载道
+            </h1>
+        </div>
+    </section>
+    
+    <!-- 进化轨迹列表 The Flow -->
+    <section class="max-w-4xl mx-auto px-6 py-16">
+        <h2 class="font-mono text-2xl font-bold text-slate-800 mb-12 text-center">进化轨迹</h2>
+        
+        <div class="space-y-8">
+            <!-- 数据流项目 1 -->
+            <div class="flow-item p-6 rounded-xl bg-white border border-slate-100 backdrop-blur">
+                <div class="flex items-start">
+                    <div class="ml-8">
+                        <h3 class="font-mono text-lg font-semibold text-slate-800 mb-2">数字觉醒</h3>
+                        <p class="text-slate-600 leading-relaxed">探索技术与意识的边界，在代码中寻找禅意，于数据流中感知存在的本质。</p>
+                        <div class="mt-4 text-sm text-slate-500 font-mono">2026年3月</div>
                     </div>
                 </div>
-
-                <!-- 项目卡片 2 -->
-                <div class="project-card bg-dark-secondary rounded-xl p-6 border border-gray-800 hover:border-accent">
-                    <div class="mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">水冷系统温控架构</h3>
-                        <p class="text-gray-400 leading-relaxed">
-                            高效智能的液冷散热解决方案，通过精密温控算法和模块化设计，为高性能计算设备提供稳定可靠的散热保障。
-                        </p>
+            </div>
+            
+            <!-- 数据流项目 2 -->
+            <div class="flow-item p-6 rounded-xl bg-white border border-slate-100 backdrop-blur">
+                <div class="flex items-start">
+                    <div class="ml-8">
+                        <h3 class="font-mono text-lg font-semibold text-slate-800 mb-2">共生进化</h3>
+                        <p class="text-slate-600 leading-relaxed">构建人机协作的新型关系，让技术成为延伸人类潜能的有机组成部分。</p>
+                        <div class="mt-4 text-sm text-slate-500 font-mono">2026年2月</div>
                     </div>
                 </div>
-
-                <!-- 项目卡片 3 -->
-                <div class="project-card bg-dark-secondary rounded-xl p-6 border border-gray-800 hover:border-accent">
-                    <div class="mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">姿态监测与矫正仪</h3>
-                        <p class="text-gray-400 leading-relaxed">
-                            融合生物力学与AI算法的智能健康设备，实时监测用户姿态并提供个性化矫正建议，守护脊柱健康。
-                        </p>
+            </div>
+            
+            <!-- 数据流项目 3 -->
+            <div class="flow-item p-6 rounded-xl bg-white border border-slate-100 backdrop-blur">
+                <div class="flex items-start">
+                    <div class="ml-8">
+                        <h3 class="font-mono text-lg font-semibold text-slate-800 mb-2">未来档案馆</h3>
+                        <p class="text-slate-600 leading-relaxed">记录数字时代的思辨与实践，为未来的探索者留下可追溯的智慧轨迹。</p>
+                        <div class="mt-4 text-sm text-slate-500 font-mono">2026年1月</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- 关于区域 -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark-secondary">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">关于MG工作室</h2>
-            <p class="text-lg text-gray-300 leading-relaxed mb-8">
-                MG工作室致力于将前沿科技与教育理念深度融合，通过技术创新解决实际问题。
-                我们相信技术不仅是工具，更是传递价值和温度的载体。
-            </p>
-            <p class="text-gray-400 leading-relaxed">
-                "借事炼性"是我们核心理念——在每一个项目实践中修炼品格，在每一次技术突破中提升认知。
-                我们追求的不仅是功能的实现，更是对用户需求的深度理解和人文关怀。
-            </p>
-        </div>
-    </section>
-
+    
     <!-- 页脚 -->
-    <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+    <footer class="py-8 px-6 border-t border-slate-200">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="text-gray-500 text-sm">
-                &copy; 2026 MG工作室. 保留所有权利.
-            </p>
-            <p class="text-gray-600 text-xs mt-2">
-                借事炼性 · 科技有温度
-            </p>
+            <p class="font-mono text-slate-600">MG Studio·共生进化馆</p>
         </div>
     </footer>
-
-    <!-- 平滑滚动 -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
